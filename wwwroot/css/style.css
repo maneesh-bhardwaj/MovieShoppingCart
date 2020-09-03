@@ -4,6 +4,6 @@
 .col-md-4 h1{
     font-family: Calibri,Arial,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.card-columns {
+.card-column {
     column-count: 2;
 }

@@ -11,7 +11,7 @@
             <h3>@item.Key</h3>
         </div>
     </div>
-    <div class="card-group">
+    <div class="card-column">
         @foreach (var movie in item)
         {
 
@@ -23,12 +23,14 @@
                     <h6 class="card-subtitle"><em>@movie.Category.Name</em></h6>
                     <!--<p class="card-text"><small class="text-muted">@movie.Description</small></p>-->
                     <p class="card-text"><small class="text-muted"><b>$@movie.Price</b></small></p>
-                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId" class="btn btn-primary btn-sm btn-block">
-                        Movie Details
-                    </a>
-                    <a asp-controller="ShoppingCart"
-                       asp-action="AddToShoppingCart"
-                       asp-route-movieId=@movie.MovieId class="btn btn-primary btn-sm btn-block">Add to Cart</a>
+                    <div class="btn-group" role="group" aria-label="First group">
+                        <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId" class="btn btn-secondary">
+                            Movie Details
+                        </a>
+                        <a asp-controller="ShoppingCart"
+                           asp-action="AddToShoppingCart"
+                           asp-route-movieId=@movie.MovieId class="btn btn-secondary">Add to Cart</a>
+                    </div>
                 </div>
             </div>
         }
