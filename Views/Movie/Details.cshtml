@@ -1,0 +1,28 @@
+﻿@model Movie
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="card-img" alt="@Model.Title">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">@Model.Title</h2>
+                <p class="card-text">
+                    <small class="text-muted">
+                        @Model.Category.Name
+                    </small>
+                </p>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><b>$@Model.Price</b></p>
+                <a asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-movieId=@Model.MovieId class="btn btn-primary">Add to Cart</a>
+                <a asp-controller="Movie"
+                   asp-action="List"
+                   class="btn btn-primary">Back To Catalog</a>
+            </div>
+        </div>
+    </div>
+</div>

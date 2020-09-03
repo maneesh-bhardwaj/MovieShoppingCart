@@ -1,0 +1,36 @@
+﻿@model MovieListVM
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!--<h1>@Model.SelectedCategoryName</h1>
+<hr />-->
+@foreach (var item in Model.Movies.GroupBy(c => c.Category.Name))
+{
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header">
+            <h3>@item.Key</h3>
+        </div>
+    </div>
+    <div class="card-group">
+        @foreach (var movie in item)
+        {
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img" src="@movie.ImageUrl" alt="@movie.Title" />
+
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <h6 class="card-subtitle"><em>@movie.Category.Name</em></h6>
+                    <!--<p class="card-text"><small class="text-muted">@movie.Description</small></p>-->
+                    <p class="card-text"><small class="text-muted"><b>$@movie.Price</b></small></p>
+                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.MovieId" class="btn btn-primary btn-sm btn-block">
+                        Movie Details
+                    </a>
+                    <a asp-controller="ShoppingCart"
+                       asp-action="AddToShoppingCart"
+                       asp-route-movieId=@movie.MovieId class="btn btn-primary btn-sm btn-block">Add to Cart</a>
+                </div>
+            </div>
+        }
+    </div>
+}
